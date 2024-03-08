@@ -1,0 +1,7 @@
+add_subdirectory("adventure_sk")
+add_subdirectory("adventure_sk2")
+add_subdirectory("bmi_sk")
+add_subdirectory("hello_world_sk")
+add_subdirectory("invoice_sk")
+add_subdirectory("library_sk")
+add_subdirectory("blocks_sk" EXCLUDE_FROM_ALL)

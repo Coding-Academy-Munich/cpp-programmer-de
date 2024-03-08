@@ -1,0 +1,335 @@
+
+*** Dumping AST Record Layout
+         0 | class BaseV1
+         0 |   int x
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | class DerivedV1
+         0 |   class BaseV1 (base)
+         0 |     int x
+         4 |   int y
+           | [sizeof=8, dsize=8, align=4,
+           |  nvsize=8, nvalign=4]
+
+*** Dumping AST Record Layout
+         0 | class BaseV2
+         0 |   (BaseV2 vtable pointer)
+         8 |   int x
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class DerivedV2
+         0 |   class BaseV2 (primary base)
+         0 |     (BaseV2 vtable pointer)
+         8 |     int x
+        12 |   int y
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class BaseV3
+         0 |   (BaseV3 vtable pointer)
+         8 |   int y
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class DerivedV3
+         0 |   class BaseV2 (primary base)
+         0 |     (BaseV2 vtable pointer)
+         8 |     int x
+        16 |   class BaseV3 (base)
+        16 |     (BaseV3 vtable pointer)
+        24 |     int y
+        28 |   int z
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
+
+*** Dumping AST Record Layout
+         0 | class PlainOldClass
+         0 |   int x
+           | [sizeof=4, dsize=4, align=4,
+           |  nvsize=4, nvalign=4]
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a59480 <layout_examples.cpp:4:1, line:11:1> line:4:7 referenced class PlainOldClass definition
+|-DefinitionData pass_in_registers standard_layout trivially_copyable has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple trivial
+| |-CopyAssignment trivial has_const_param needs_implicit implicit_has_const_param
+| |-MoveAssignment exists simple trivial needs_implicit
+| `-Destructor simple irrelevant trivial needs_implicit
+|-CXXRecordDecl 0x1a59598 <col:1, col:7> col:7 implicit referenced class PlainOldClass
+|-AccessSpecDecl 0x1a59628 <line:6:1, col:7> col:1 public
+|-FieldDecl 0x1a59668 <line:7:5, col:9> col:9 x 'int'
+|-CXXConstructorDecl 0x1a597d8 <line:8:5, col:34> col:5 used PlainOldClass 'void (int)'
+| |-ParmVarDecl 0x1a596d0 <col:19, col:23> col:23 used x 'int'
+| |-CXXCtorInitializer Field 0x1a59668 'x' 'int'
+| | `-InitListExpr 0x1a59a38 <col:29, col:31> 'int'
+| |   `-ImplicitCastExpr 0x1a59a78 <col:30> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a599c0 <col:30> 'int' lvalue ParmVar 0x1a596d0 'x' 'int'
+| `-CompoundStmt 0x1a59ac8 <col:33, col:34>
+|-CXXMethodDecl 0x1a59908 <line:10:5, col:25> col:10 print 'void () const'
+| `-CompoundStmt 0x1a59ad8 <col:24, col:25>
+|-CXXConstructorDecl 0x1a8d218 <line:4:7> col:7 implicit constexpr PlainOldClass 'void (const PlainOldClass &)' inline default trivial noexcept-unevaluated 0x1a8d218
+| `-ParmVarDecl 0x1a8d328 <col:7> col:7 'const PlainOldClass &'
+`-CXXConstructorDecl 0x1a8d3c8 <col:7> col:7 implicit constexpr PlainOldClass 'void (PlainOldClass &&)' inline default trivial noexcept-unevaluated 0x1a8d3c8
+  `-ParmVarDecl 0x1a8d4d8 <col:7> col:7 'PlainOldClass &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.PlainOldClass = type { i32 }
+  NonVirtualBaseLLVMType:%class.PlainOldClass = type { i32 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a59ae8 <layout_examples.cpp:13:1, line:20:1> line:13:7 referenced class BaseV1 definition
+|-DefinitionData pass_in_registers standard_layout trivially_copyable has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple trivial
+| |-CopyAssignment trivial has_const_param needs_implicit implicit_has_const_param
+| |-MoveAssignment exists simple trivial needs_implicit
+| `-Destructor simple irrelevant trivial
+|-CXXRecordDecl 0x1a59c08 <col:1, col:7> col:7 implicit referenced class BaseV1
+|-AccessSpecDecl 0x1a59c98 <line:15:1, col:7> col:1 public
+|-FieldDecl 0x1a59cd8 <line:16:5, col:9> col:9 x 'int'
+|-CXXConstructorDecl 0x1a59e18 <line:17:5, col:27> col:5 used BaseV1 'void (int)'
+| |-ParmVarDecl 0x1a59d40 <col:12, col:16> col:16 used x 'int'
+| |-CXXCtorInitializer Field 0x1a59cd8 'x' 'int'
+| | `-InitListExpr 0x1a5a048 <col:22, col:24> 'int'
+| |   `-ImplicitCastExpr 0x1a5a088 <col:23> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a59fd0 <col:23> 'int' lvalue ParmVar 0x1a59d40 'x' 'int'
+| `-CompoundStmt 0x1a5a0d8 <col:26, col:27>
+|-CXXMethodDecl 0x1a59f18 <line:19:5, col:25> col:10 used print 'void () const'
+| `-CompoundStmt 0x1a5a0e8 <col:24, col:25>
+|-CXXConstructorDecl 0x1a85a58 <line:13:7> col:7 implicit constexpr BaseV1 'void (const BaseV1 &)' inline default trivial noexcept-unevaluated 0x1a85a58
+| `-ParmVarDecl 0x1a85b68 <col:7> col:7 'const BaseV1 &'
+|-CXXConstructorDecl 0x1a85c08 <col:7> col:7 implicit constexpr BaseV1 'void (BaseV1 &&)' inline default trivial noexcept-unevaluated 0x1a85c08
+| `-ParmVarDecl 0x1a85d18 <col:7> col:7 'BaseV1 &&'
+`-CXXDestructorDecl 0x1a8d968 <col:7> col:7 implicit ~BaseV1 'void ()' inline default trivial noexcept-unevaluated 0x1a8d968
+
+Layout: <CGRecordLayout
+  LLVMType:%class.BaseV1 = type { i32 }
+  NonVirtualBaseLLVMType:%class.BaseV1 = type { i32 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a5a0f8 <layout_examples.cpp:22:1, line:29:1> line:22:7 referenced class DerivedV1 definition
+|-DefinitionData pass_in_registers trivially_copyable has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple trivial
+| |-CopyAssignment trivial has_const_param needs_implicit implicit_has_const_param
+| |-MoveAssignment exists simple trivial needs_implicit
+| `-Destructor simple irrelevant trivial needs_implicit
+|-public 'BaseV1'
+|-CXXRecordDecl 0x1a5a258 <col:1, col:7> col:7 implicit referenced class DerivedV1
+|-AccessSpecDecl 0x1a5a2e8 <line:24:1, col:7> col:1 public
+|-FieldDecl 0x1a85600 <line:25:5, col:9> col:9 y 'int'
+|-CXXConstructorDecl 0x1a857f8 <line:26:5, col:48> col:5 used DerivedV1 'void (int, int)'
+| |-ParmVarDecl 0x1a85668 <col:15, col:19> col:19 used x 'int'
+| |-ParmVarDecl 0x1a856e8 <col:22, col:26> col:26 used y 'int'
+| |-CXXCtorInitializer 'BaseV1'
+| | `-CXXConstructExpr 0x1a85da0 <col:31, col:39> 'BaseV1' 'void (int)' list
+| |   `-ImplicitCastExpr 0x1a85d88 <col:38> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a859b0 <col:38> 'int' lvalue ParmVar 0x1a85668 'x' 'int'
+| |-CXXCtorInitializer Field 0x1a85600 'y' 'int'
+| | `-InitListExpr 0x1a85e70 <col:43, col:45> 'int'
+| |   `-ImplicitCastExpr 0x1a85eb0 <col:44> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a85df8 <col:44> 'int' lvalue ParmVar 0x1a856e8 'y' 'int'
+| `-CompoundStmt 0x1a85f08 <col:47, col:48>
+|-CXXMethodDecl 0x1a858f8 <line:28:5, col:25> col:10 used print 'void () const'
+| `-CompoundStmt 0x1a85f18 <col:24, col:25>
+|-CXXConstructorDecl 0x1a8d7e8 <line:22:7> col:7 implicit constexpr DerivedV1 'void (const DerivedV1 &)' inline default trivial noexcept-unevaluated 0x1a8d7e8
+| `-ParmVarDecl 0x1a8d8f8 <col:7> col:7 'const DerivedV1 &'
+`-CXXConstructorDecl 0x1a8da78 <col:7> col:7 implicit constexpr DerivedV1 'void (DerivedV1 &&)' inline default trivial noexcept-unevaluated 0x1a8da78
+  `-ParmVarDecl 0x1a8db88 <col:7> col:7 'DerivedV1 &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.DerivedV1 = type { %class.BaseV1, i32 }
+  NonVirtualBaseLLVMType:%class.DerivedV1 = type { %class.BaseV1, i32 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a85f28 <layout_examples.cpp:31:1, line:38:1> line:31:7 referenced class BaseV2 definition
+|-DefinitionData polymorphic has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple non_trivial
+| |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| |-MoveAssignment exists simple non_trivial
+| `-Destructor simple irrelevant trivial
+|-CXXRecordDecl 0x1a86048 <col:1, col:7> col:7 implicit referenced class BaseV2
+|-AccessSpecDecl 0x1a860d8 <line:33:1, col:7> col:1 public
+|-FieldDecl 0x1a86118 <line:34:5, col:9> col:9 x 'int'
+|-CXXConstructorDecl 0x1a86258 <line:35:5, col:27> col:5 used BaseV2 'void (int)'
+| |-ParmVarDecl 0x1a86180 <col:12, col:16> col:16 used x 'int'
+| |-CXXCtorInitializer Field 0x1a86118 'x' 'int'
+| | `-InitListExpr 0x1a87348 <col:22, col:24> 'int'
+| |   `-ImplicitCastExpr 0x1a87388 <col:23> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a872d0 <col:23> 'int' lvalue ParmVar 0x1a86180 'x' 'int'
+| `-CompoundStmt 0x1a873d8 <col:26, col:27>
+|-CXXMethodDecl 0x1a86358 <line:37:5, col:33> col:18 used print 'void () const' virtual
+| `-CompoundStmt 0x1a873e8 <col:32, col:33>
+|-CXXMethodDecl 0x1a86458 <line:31:7> col:7 implicit operator= 'BaseV2 &(const BaseV2 &)' inline default noexcept-unevaluated 0x1a86458
+| `-ParmVarDecl 0x1a86568 <col:7> col:7 'const BaseV2 &'
+|-CXXMethodDecl 0x1a87028 <col:7> col:7 implicit operator= 'BaseV2 &(BaseV2 &&)' inline default noexcept-unevaluated 0x1a87028
+| `-ParmVarDecl 0x1a87138 <col:7> col:7 'BaseV2 &&'
+|-CXXDestructorDecl 0x1a871c0 <col:7> col:7 implicit ~BaseV2 'void ()' inline default trivial noexcept-unevaluated 0x1a871c0
+|-CXXConstructorDecl 0x1a87ee8 <col:7> col:7 implicit constexpr BaseV2 'void (const BaseV2 &)' inline default noexcept-unevaluated 0x1a87ee8
+| `-ParmVarDecl 0x1a88bd0 <col:7> col:7 'const BaseV2 &'
+`-CXXConstructorDecl 0x1a88c40 <col:7> col:7 implicit constexpr BaseV2 'void (BaseV2 &&)' inline default noexcept-unevaluated 0x1a88c40
+  `-ParmVarDecl 0x1a88d58 <col:7> col:7 'BaseV2 &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.BaseV2 = type <{ i32 (...)**, i32, [4 x i8] }>
+  NonVirtualBaseLLVMType:%class.BaseV2.base = type <{ i32 (...)**, i32 }>
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a873f8 <layout_examples.cpp:40:1, line:47:1> line:40:7 referenced class DerivedV2 definition
+|-DefinitionData polymorphic has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple non_trivial
+| |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| |-MoveAssignment exists simple non_trivial
+| `-Destructor simple irrelevant trivial
+|-public 'BaseV2'
+|-CXXRecordDecl 0x1a87558 <col:1, col:7> col:7 implicit referenced class DerivedV2
+|-AccessSpecDecl 0x1a875e8 <line:42:1, col:7> col:1 public
+|-FieldDecl 0x1a87628 <line:43:5, col:9> col:9 y 'int'
+|-CXXConstructorDecl 0x1a877f0 <line:44:5, col:48> col:5 used DerivedV2 'void (int, int)'
+| |-ParmVarDecl 0x1a87690 <col:15, col:19> col:19 used x 'int'
+| |-ParmVarDecl 0x1a87710 <col:22, col:26> col:26 used y 'int'
+| |-CXXCtorInitializer 'BaseV2'
+| | `-CXXConstructExpr 0x1a88de0 <col:31, col:39> 'BaseV2' 'void (int)' list
+| |   `-ImplicitCastExpr 0x1a88dc8 <col:38> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a87e70 <col:38> 'int' lvalue ParmVar 0x1a87690 'x' 'int'
+| |-CXXCtorInitializer Field 0x1a87628 'y' 'int'
+| | `-InitListExpr 0x1a88eb0 <col:43, col:45> 'int'
+| |   `-ImplicitCastExpr 0x1a88ef0 <col:44> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a88e38 <col:44> 'int' lvalue ParmVar 0x1a87710 'y' 'int'
+| `-CompoundStmt 0x1a88f48 <col:47, col:48>
+|-CXXMethodDecl 0x1a878f8 <line:46:5, col:34> col:10 used print 'void () const'
+| |-Overrides: [ 0x1a86358 BaseV2::print 'void () const' ]
+| |-CompoundStmt 0x1a88f58 <col:33, col:34>
+| `-OverrideAttr 0x1a87998 <col:24>
+|-CXXMethodDecl 0x1a87a48 <line:40:7> col:7 implicit operator= 'DerivedV2 &(const DerivedV2 &)' inline default noexcept-unevaluated 0x1a87a48
+| `-ParmVarDecl 0x1a87b58 <col:7> col:7 'const DerivedV2 &'
+|-CXXMethodDecl 0x1a87bf8 <col:7> col:7 implicit operator= 'DerivedV2 &(DerivedV2 &&)' inline default noexcept-unevaluated 0x1a87bf8
+| `-ParmVarDecl 0x1a87d08 <col:7> col:7 'DerivedV2 &&'
+|-CXXDestructorDecl 0x1a87d90 <col:7> col:7 implicit ~DerivedV2 'void ()' inline default trivial noexcept-unevaluated 0x1a87d90
+|-CXXConstructorDecl 0x1a8de78 <col:7> col:7 implicit constexpr DerivedV2 'void (const DerivedV2 &)' inline default noexcept-unevaluated 0x1a8de78
+| `-ParmVarDecl 0x1a8e000 <col:7> col:7 'const DerivedV2 &'
+`-CXXConstructorDecl 0x1a8e070 <col:7> col:7 implicit constexpr DerivedV2 'void (DerivedV2 &&)' inline default noexcept-unevaluated 0x1a8e070
+  `-ParmVarDecl 0x1a8e188 <col:7> col:7 'DerivedV2 &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.DerivedV2 = type { %class.BaseV2.base, i32 }
+  NonVirtualBaseLLVMType:%class.DerivedV2 = type { %class.BaseV2.base, i32 }
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a88f68 <layout_examples.cpp:49:1, line:56:1> line:49:7 referenced class BaseV3 definition
+|-DefinitionData polymorphic has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple non_trivial
+| |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| |-MoveAssignment exists simple non_trivial
+| `-Destructor simple irrelevant trivial
+|-CXXRecordDecl 0x1a89088 <col:1, col:7> col:7 implicit referenced class BaseV3
+|-AccessSpecDecl 0x1a89118 <line:51:1, col:7> col:1 public
+|-FieldDecl 0x1a89158 <line:52:5, col:9> col:9 y 'int'
+|-CXXConstructorDecl 0x1a89298 <line:53:5, col:27> col:5 used BaseV3 'void (int)'
+| |-ParmVarDecl 0x1a891c0 <col:12, col:16> col:16 used y 'int'
+| |-CXXCtorInitializer Field 0x1a89158 'y' 'int'
+| | `-InitListExpr 0x1a89938 <col:22, col:24> 'int'
+| |   `-ImplicitCastExpr 0x1a89978 <col:23> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a898c0 <col:23> 'int' lvalue ParmVar 0x1a891c0 'y' 'int'
+| `-CompoundStmt 0x1a899c8 <col:26, col:27>
+|-CXXMethodDecl 0x1a89398 <line:55:5, col:31> col:18 used foo 'void () const' virtual
+| `-CompoundStmt 0x1a899d8 <col:30, col:31>
+|-CXXMethodDecl 0x1a89498 <line:49:7> col:7 implicit operator= 'BaseV3 &(const BaseV3 &)' inline default noexcept-unevaluated 0x1a89498
+| `-ParmVarDecl 0x1a895a8 <col:7> col:7 'const BaseV3 &'
+|-CXXMethodDecl 0x1a89648 <col:7> col:7 implicit operator= 'BaseV3 &(BaseV3 &&)' inline default noexcept-unevaluated 0x1a89648
+| `-ParmVarDecl 0x1a89758 <col:7> col:7 'BaseV3 &&'
+|-CXXDestructorDecl 0x1a897e0 <col:7> col:7 implicit ~BaseV3 'void ()' inline default trivial noexcept-unevaluated 0x1a897e0
+|-CXXConstructorDecl 0x1a8bfa0 <col:7> col:7 implicit constexpr BaseV3 'void (const BaseV3 &)' inline default noexcept-unevaluated 0x1a8bfa0
+| `-ParmVarDecl 0x1a8c0b8 <col:7> col:7 'const BaseV3 &'
+`-CXXConstructorDecl 0x1a8c128 <col:7> col:7 implicit constexpr BaseV3 'void (BaseV3 &&)' inline default noexcept-unevaluated 0x1a8c128
+  `-ParmVarDecl 0x1a8c238 <col:7> col:7 'BaseV3 &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.BaseV3 = type <{ i32 (...)**, i32, [4 x i8] }>
+  NonVirtualBaseLLVMType:%class.BaseV3.base = type <{ i32 (...)**, i32 }>
+  IsZeroInitializable:1
+  BitFields:[
+]>
+
+*** Dumping IRgen Record Layout
+Record: CXXRecordDecl 0x1a899e8 <layout_examples.cpp:58:1, line:67:1> line:58:7 referenced class DerivedV3 definition
+|-DefinitionData polymorphic has_user_declared_ctor can_const_default_init
+| |-DefaultConstructor
+| |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| |-MoveConstructor exists simple non_trivial
+| |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| |-MoveAssignment exists simple non_trivial
+| `-Destructor simple irrelevant trivial
+|-public 'BaseV2'
+|-public 'BaseV3'
+|-CXXRecordDecl 0x1a8b460 <col:1, col:7> col:7 implicit referenced class DerivedV3
+|-AccessSpecDecl 0x1a8b4f0 <line:62:1, col:7> col:1 public
+|-FieldDecl 0x1a8b530 <line:63:5, col:9> col:9 z 'int'
+|-CXXConstructorDecl 0x1a8b7b8 <line:64:5, col:66> col:5 used DerivedV3 'void (int, int, int)'
+| |-ParmVarDecl 0x1a8b598 <col:15, col:19> col:19 used x 'int'
+| |-ParmVarDecl 0x1a8b618 <col:22, col:26> col:26 used y 'int'
+| |-ParmVarDecl 0x1a8b698 <col:29, col:33> col:33 used z 'int'
+| |-CXXCtorInitializer 'BaseV2'
+| | `-CXXConstructExpr 0x1a8bed0 <col:38, col:46> 'BaseV2' 'void (int)' list
+| |   `-ImplicitCastExpr 0x1a8beb8 <col:45> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a8be40 <col:45> 'int' lvalue ParmVar 0x1a8b598 'x' 'int'
+| |-CXXCtorInitializer 'BaseV3'
+| | `-CXXConstructExpr 0x1a8c2c0 <col:49, col:57> 'BaseV3' 'void (int)' list
+| |   `-ImplicitCastExpr 0x1a8c2a8 <col:56> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a8bf28 <col:56> 'int' lvalue ParmVar 0x1a8b618 'y' 'int'
+| |-CXXCtorInitializer Field 0x1a8b530 'z' 'int'
+| | `-InitListExpr 0x1a8c390 <col:61, col:63> 'int'
+| |   `-ImplicitCastExpr 0x1a8c3d0 <col:62> 'int' <LValueToRValue>
+| |     `-DeclRefExpr 0x1a8c318 <col:62> 'int' lvalue ParmVar 0x1a8b698 'z' 'int'
+| `-CompoundStmt 0x1a8c430 <col:65, col:66>
+|-CXXMethodDecl 0x1a8b8c8 <line:66:5, col:34> col:10 used print 'void () const'
+| |-Overrides: [ 0x1a86358 BaseV2::print 'void () const' ]
+| |-CompoundStmt 0x1a8c440 <col:33, col:34>
+| `-OverrideAttr 0x1a8b968 <col:24>
+|-CXXMethodDecl 0x1a8ba18 <line:58:7> col:7 implicit operator= 'DerivedV3 &(const DerivedV3 &)' inline default noexcept-unevaluated 0x1a8ba18
+| `-ParmVarDecl 0x1a8bb28 <col:7> col:7 'const DerivedV3 &'
+|-CXXMethodDecl 0x1a8bbc8 <col:7> col:7 implicit operator= 'DerivedV3 &(DerivedV3 &&)' inline default noexcept-unevaluated 0x1a8bbc8
+| `-ParmVarDecl 0x1a8bcd8 <col:7> col:7 'DerivedV3 &&'
+|-CXXDestructorDecl 0x1a8bd60 <col:7> col:7 implicit ~DerivedV3 'void ()' inline default trivial noexcept-unevaluated 0x1a8bd60
+|-CXXConstructorDecl 0x1a8e4a0 <col:7> col:7 implicit constexpr DerivedV3 'void (const DerivedV3 &)' inline default noexcept-unevaluated 0x1a8e4a0
+| `-ParmVarDecl 0x1a8e5b8 <col:7> col:7 'const DerivedV3 &'
+`-CXXConstructorDecl 0x1a8e628 <col:7> col:7 implicit constexpr DerivedV3 'void (DerivedV3 &&)' inline default noexcept-unevaluated 0x1a8e628
+  `-ParmVarDecl 0x1a8e738 <col:7> col:7 'DerivedV3 &&'
+
+Layout: <CGRecordLayout
+  LLVMType:%class.DerivedV3 = type { %class.BaseV2.base, [4 x i8], %class.BaseV3.base, i32 }
+  NonVirtualBaseLLVMType:%class.DerivedV3 = type { %class.BaseV2.base, [4 x i8], %class.BaseV3.base, i32 }
+  IsZeroInitializable:1
+  BitFields:[
+]>

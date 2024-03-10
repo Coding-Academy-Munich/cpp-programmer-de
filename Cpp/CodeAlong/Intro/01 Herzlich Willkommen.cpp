@@ -24,4 +24,4 @@
 // <div style="text-align:center;">Coding-Akademie München</div>
 // <br/>
 // <!-- 01 Herzlich Willkommen.cpp -->
-// <!-- slides/module_110_introduction/topic_110_welcome_101.cpp -->
+// <!-- slides/module_110_introduction/topic_110_welcome_beginner.cpp -->

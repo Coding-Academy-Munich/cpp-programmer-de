@@ -6,6 +6,8 @@
 #include <memory>
 #include <string>
 #include <sstream>
+
+#include "type_name.hpp"
 #include "nlohmann/json.hpp"
 
 struct Obs;
@@ -20,7 +22,7 @@ struct Obs
 
     Obs() : id{next_id()} { std::cout << "Obs(): " << *this << "\n"; }
 
-    Obs(int value) : value{value}, id{next_id()}
+    explicit Obs(int value) : value{value}, id{next_id()}
     {
         std::cout << "Obs(" << value << "): " << *this << "\n";
     }
@@ -74,10 +76,20 @@ inline nl::json mime_bundle_repr(const Obs& obs)
     return bundle;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const Obs& obs)
+std::ostream& operator<<(std::ostream& os, const Obs& obs)
 {
-    os << "Obs{" << obs.value << ", " << obs.id << "} @" << &obs;
+    // os << "Obs{" << obs.value << ", " << obs.id << "} @" << &obs;
+    os << "Obs{" << obs.value << ", " << obs.id << "}";
     return os;
 }
+
+std::string to_string(const Obs& obs)
+{
+    std::stringstream ss{};
+    ss << obs;
+    return ss.str();
+}
+
+DEFINE_TYPE_NAME(Obs);
 
 #endif // LIFETIME_OBSERVER_HPP

@@ -7,7 +7,7 @@
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
 *
-*   Copyright (c) 2017-2023 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2017-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
 
@@ -18,7 +18,7 @@
 
 #if defined(PLATFORM_DESKTOP)
     #define GLSL_VERSION            330
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
+#else   // PLATFORM_ANDROID, PLATFORM_WEB
     #define GLSL_VERSION            100
 #endif
 
@@ -68,14 +68,12 @@ int main(void)
 
     char skyboxFileName[256] = { 0 };
     
-    Texture2D panorama;
-
     if (useHDR)
     {
         TextCopy(skyboxFileName, "resources/dresden_square_2k.hdr");
 
         // Load HDR panorama (sphere) texture
-        panorama = LoadTexture(skyboxFileName);
+        Texture2D panorama = LoadTexture(skyboxFileName);
 
         // Generate cubemap (texture with 6 quads-cube-mapping) from panorama HDR texture
         // NOTE 1: New texture is generated rendering to texture, shader calculates the sphere->cube coordinates mapping
@@ -83,7 +81,7 @@ int main(void)
         // despite texture can be successfully created.. so using PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 instead of PIXELFORMAT_UNCOMPRESSED_R32G32B32A32
         skybox.materials[0].maps[MATERIAL_MAP_CUBEMAP].texture = GenTextureCubemap(shdrCubemap, panorama, 1024, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
 
-        //UnloadTexture(panorama);    // Texture not required anymore, cubemap already generated
+        UnloadTexture(panorama);        // Texture not required anymore, cubemap already generated
     }
     else
     {
@@ -113,15 +111,18 @@ int main(void)
             {
                 if (IsFileExtension(droppedFiles.paths[0], ".png;.jpg;.hdr;.bmp;.tga"))
                 {
-                    // Unload current cubemap texture and load new one
+                    // Unload current cubemap texture to load new one
                     UnloadTexture(skybox.materials[0].maps[MATERIAL_MAP_CUBEMAP].texture);
+                    
                     if (useHDR)
                     {
+                        // Load HDR panorama (sphere) texture
                         Texture2D panorama = LoadTexture(droppedFiles.paths[0]);
 
                         // Generate cubemap from panorama texture
                         skybox.materials[0].maps[MATERIAL_MAP_CUBEMAP].texture = GenTextureCubemap(shdrCubemap, panorama, 1024, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
-                        UnloadTexture(panorama);
+                        
+                        UnloadTexture(panorama);    // Texture not required anymore, cubemap already generated
                     }
                     else
                     {
@@ -193,7 +194,7 @@ static TextureCubemap GenTextureCubemap(Shader shader, Texture2D panorama, int s
     unsigned int rbo = rlLoadTextureDepth(size, size, true);
     cubemap.id = rlLoadTextureCubemap(0, size, format);
 
-    unsigned int fbo = rlLoadFramebuffer(size, size);
+    unsigned int fbo = rlLoadFramebuffer();
     rlFramebufferAttach(fbo, rbo, RL_ATTACHMENT_DEPTH, RL_ATTACHMENT_RENDERBUFFER, 0);
     rlFramebufferAttach(fbo, cubemap.id, RL_ATTACHMENT_COLOR_CHANNEL0, RL_ATTACHMENT_CUBEMAP_POSITIVE_X, 0);
 

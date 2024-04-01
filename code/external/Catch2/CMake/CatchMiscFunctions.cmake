@@ -46,7 +46,6 @@ function(add_warnings_to_targets targets)
         set(CHECKED_WARNING_FLAGS
           "-Wabsolute-value"
           "-Wall"
-          "-Wc++20-compat"
           "-Wcall-to-pure-virtual-from-ctor-dtor"
           "-Wcast-align"
           "-Wcatch-value"
@@ -79,6 +78,7 @@ function(add_warnings_to_targets targets)
           "-Wreturn-std-move"
           "-Wshadow"
           "-Wstrict-aliasing"
+          "-Wsubobject-linkage"
           "-Wsuggest-destructor-override"
           "-Wsuggest-override"
           "-Wundef"

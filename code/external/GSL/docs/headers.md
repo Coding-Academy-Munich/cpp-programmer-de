@@ -134,6 +134,13 @@ constexpr byte operator~(byte b) noexcept;
 Bitwise negation of a `byte`. Flips all bits. Zeroes become ones, ones become zeroes.
 
 ```cpp
+template <class IntegerType, class = std::enable_if_t<std::is_integral<IntegerType>::value>>
+constexpr IntegerType to_integer(byte b) noexcept;
+```
+
+Convert the given `byte` value to an integral type.
+
+```cpp
 template <typename T>
 constexpr byte to_byte(T t) noexcept;
 ```
@@ -804,7 +811,7 @@ void operator=(const final_action&) = delete;
 void operator=(final_action&&)      = delete;
 ```
 
-Move construction is allowed. Copy construction is deleted. Copy and move assignment are also explicitely deleted.
+Move construction is allowed. Copy construction is deleted. Copy and move assignment are also explicitly deleted.
 
 #### <a name="H-util-finally" />Non-member functions
 ```cpp

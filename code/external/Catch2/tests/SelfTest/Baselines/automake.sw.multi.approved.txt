@@ -152,6 +152,7 @@
 :test-result: PASS Filter generator throws exception for empty generator
 :test-result: PASS Floating point matchers: double
 :test-result: PASS Floating point matchers: float
+:test-result: PASS GENERATE can combine literals and generators
 :test-result: PASS Generators -- adapters
 :test-result: PASS Generators -- simple
 :test-result: PASS Generators internals
@@ -160,6 +161,7 @@
 :test-result: PASS Hashers with same seed produce same hash
 :test-result: PASS Hashing different test cases produces different result
 :test-result: PASS Hashing test case produces same hash across multiple calls
+:test-result: FAIL INFO and UNSCOPED_INFO can stream multiple arguments
 :test-result: FAIL INFO and WARN do not abort tests
 :test-result: FAIL INFO gets logged on failure
 :test-result: FAIL INFO gets logged on failure, even if captured before successful assertions
@@ -167,6 +169,8 @@
 :test-result: XFAIL Incomplete AssertionHandler
 :test-result: XFAIL Inequality checks that should fail
 :test-result: PASS Inequality checks that should succeed
+:test-result: PASS JsonWriter
+:test-result: PASS JsonWriter escapes charaters in strings properly
 :test-result: PASS Lambdas in assertions
 :test-result: PASS Less-than inequalities with different epsilons
 :test-result: PASS ManuallyRegistered
@@ -400,6 +404,7 @@
 :test-result: PASS tuple<string,string>
 :test-result: PASS tuple<tuple<int>,tuple<>,float>
 :test-result: PASS uniform samples
+:test-result: PASS uniform_integer_distribution can return the bounds
 :test-result: PASS unique_ptr reimplementation: basic functionality
 :test-result: PASS vec<vec<string,alloc>> -> toString
 :test-result: PASS vector<bool> -> toString

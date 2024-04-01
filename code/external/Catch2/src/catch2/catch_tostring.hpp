@@ -279,11 +279,11 @@ namespace Catch {
     };
     template<>
     struct StringMaker<signed char> {
-        static std::string convert(signed char c);
+        static std::string convert(signed char value);
     };
     template<>
     struct StringMaker<unsigned char> {
-        static std::string convert(unsigned char c);
+        static std::string convert(unsigned char value);
     };
 
     template<>
@@ -396,6 +396,12 @@ namespace Catch {
             } else {
                 return "{ }";
             }
+        }
+    };
+    template <>
+    struct StringMaker<std::nullopt_t> {
+        static std::string convert(const std::nullopt_t&) {
+            return "{ }";
         }
     };
 }

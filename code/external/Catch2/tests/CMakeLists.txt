@@ -59,7 +59,7 @@ if (CATCH_BUILD_SURROGATES)
   )
   target_link_libraries(Catch2SurrogateTarget PRIVATE Catch2WithMain)
 
-endif(CATCH_BUILD_SURROGATES)
+endif()
 
 ####
 # Temporary workaround for VS toolset changes in 2017
@@ -70,7 +70,7 @@ if (MSVC)
 configure_file(${CATCH_DIR}/tools/misc/SelfTest.vcxproj.user
                ${CMAKE_BINARY_DIR}/tests
                COPYONLY)
-endif(MSVC) #Temporary workaround
+endif() #Temporary workaround
 
 
 # define the sources of the self test
@@ -86,7 +86,9 @@ set(TEST_SOURCES
         ${SELF_TEST_DIR}/IntrospectiveTests/Details.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/FloatingPoint.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/GeneratorsImpl.tests.cpp
+        ${SELF_TEST_DIR}/IntrospectiveTests/Integer.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/InternalBenchmark.tests.cpp
+        ${SELF_TEST_DIR}/IntrospectiveTests/Json.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/Parse.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/PartTracker.tests.cpp
         ${SELF_TEST_DIR}/IntrospectiveTests/RandomNumberGeneration.tests.cpp
@@ -642,7 +644,8 @@ foreach (reporterName # "Automake" - the simple .trs format does not support any
                       "SonarQube"
                       "TAP"
                       # "TeamCity" - does not seem to support test suite-level metadata/comments
-                      "XML")
+                      "XML"
+                      "JSON")
 
     add_test(NAME "Reporters:Filters:${reporterName}"
       COMMAND
@@ -652,6 +655,8 @@ foreach (reporterName # "Automake" - the simple .trs format does not support any
     # Different regex for these two reporters, because the commas end up xml-escaped
     if (reporterName MATCHES "JUnit|XML")
       set(testCaseNameFormat "&quot;CaseInsensitiveLess is case insensitive&quot;")
+    elseif(reporterName MATCHES "JSON")
+      set(testCaseNameFormat "\\\\\"CaseInsensitiveLess is case insensitive\\\\\"")
     else()
       set(testCaseNameFormat "\"CaseInsensitiveLess is case insensitive\"")
     endif()

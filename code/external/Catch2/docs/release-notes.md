@@ -2,6 +2,10 @@
 
 # Release notes
 **Contents**<br>
+[3.5.3](#353)<br>
+[3.5.2](#352)<br>
+[3.5.1](#351)<br>
+[3.5.0](#350)<br>
 [3.4.0](#340)<br>
 [3.3.2](#332)<br>
 [3.3.1](#331)<br>
@@ -56,6 +60,84 @@
 [Older versions](#older-versions)<br>
 [Even Older versions](#even-older-versions)<br>
 
+
+## 3.5.3
+
+### Fixes
+* Fixed OOB access when computing filename tag (from the `-#` flag) for file without extension (#2798)
+* Fixed the linking against `log` on Android to be `PRIVATE` (#2815)
+* Fixed `Wuseless-cast` in benchmarking internals (#2823)
+
+### Improvements
+* Restored compatibility with VS2017 (#2792, #2822)
+  * The baseline for Catch2 is still C++14 with some reasonable workarounds for specific compilers, so if VS2017 starts acting up again, the support will be dropped again.
+* Suppressed clang-tidy's `bugprone-chained-comparison` in assertions (#2801)
+* Improved the static analysis mode to evaluate arguments to `TEST_CASE` and `SECTION` (#2817)
+  * Clang-tidy should no longer warn about runtime arguments to these macros being unused in static analysis mode.
+  * Clang-tidy can warn on issues involved arguments to these macros.
+* Added support for literal-zero detectors based on `consteval` constructors
+  * This is required for compiling `REQUIRE((a <=> b) == 0)` against MSVC's stdlib.
+  * Sadly, MSVC still cannot compile this assertion as it does not implement C++20 correctly.
+  * You can use `clang-cl` with MSVC's stdlib instead.
+  * If for some godforsaken reasons you want to understand this better, read the two relevant commits: [`dc51386b9fd61f99ea9c660d01867e6ad489b403`](https://github.com/catchorg/Catch2/commit/dc51386b9fd61f99ea9c660d01867e6ad489b403), and [`0787132fc82a75e3fb255aa9484ca1dc1eff2a30`](https://github.com/catchorg/Catch2/commit/0787132fc82a75e3fb255aa9484ca1dc1eff2a30).
+
+### Miscellaneous
+* Disabled tests for FP random generator reproducibility on non-SSE2 x86 targets (#2796)
+* Modified the in-tree Conan recipe to support Conan 2 (#2805)
+
+
+## 3.5.2
+
+### Fixes
+* Fixed `-Wsubobject-linkage` in the Console reporter (#2794)
+* Fixed adding new CLI Options to lvalue parser using `|` (#2787)
+
+
+## 3.5.1
+
+### Improvements
+* Significantly improved performance of the CLI parsing.
+  * This includes the cost of preparing the CLI parser, so Catch2's binaries start much faster.
+
+### Miscellaneous
+* Added support for Bazel modules (#2781)
+* Added CMake option to disable the build reproducibility settings (#2785)
+* Added `log` library linking to the Meson build (#2784)
+
+
+## 3.5.0
+
+### Improvements
+* Introduced `CATCH_CONFIG_PREFIX_MESSAGES` to prefix only logging macros (#2544)
+  * This means `INFO`, `UNSCOPED_INFO`, `WARN` and `CAPTURE`.
+* Section hints in static analysis mode are now `const`
+  * This prevents Clang-Tidy from complaining about `misc-const-correctness`.
+* `from_range` generator supports C arrays and ranges that require ADL (#2737)
+* Stringification support for `std::optional` now also includes `std::nullopt` (#2740)
+* The Console reporter flushes output after writing benchmark runtime estimate.
+  * This means that you can immediately see for how long the benchmark is expected to run.
+* Added workaround to enable compilation with ICC 19.1 (#2551, #2766)
+* Compiling Catch2 for XBox should work out of the box (#2772)
+  * Catch2 should automatically disable getenv when compiled for XBox.
+* Compiling Catch2 with exceptions disabled no longer triggers `Wunused-function` (#2726)
+* **`random` Generators for integral types are now reproducible across different platforms**
+  * Unlike `<random>`, Catch2's generators also support 1 byte integral types (`char`, `bool`, ...)
+* **`random` Generators for `float` and `double` are now reproducible across different platforms**
+  * `long double` varies across different platforms too much to be reproducible
+  * This guarantee applies only to platforms with IEEE 754 floats.
+
+### Fixes
+* UDL declaration inside Catch2 are now strictly conforming to the standard
+  * `operator "" _a` is UB, `operator ""_a` is fine. Seriously.
+* Fixed `CAPTURE` tests failing to compile in C++23 mode (#2744)
+* Fixed missing include in `catch_message.hpp` (#2758)
+* Fixed `CHECK_ELSE` suppressing failure from uncaught exceptions(#2723)
+
+### Miscellaneous
+* The documentation for specifying which tests to run through commandline has been completely rewritten (#2738)
+* Fixed installation when building Catch2 with meson (#2722, #2742)
+* Fixed `catch_discover_tests` when using custom reporter and `PRE_TEST` discovery mode (#2747)
+* `catch_discover_tests` supports multi-config CMake generator in `PRE_TEST` discovery mode (#2739, #2746)
 
 
 ## 3.4.0
@@ -381,7 +463,7 @@ v3 releases.
 * Added `STATIC_CHECK` macro, similar to `STATIC_REQUIRE` (#2318)
   * When deferred tu runtime, it behaves like `CHECK`, and not like `REQUIRE`.
 * You can have multiple tests with the same name, as long as other parts of the test identity differ (#1915, #1999, #2175)
-  * Test identity includes test's name, test's tags and and test's class name if applicable.
+  * Test identity includes test's name, test's tags and test's class name if applicable.
 * Added new warning, `UnmatchedTestSpec`, to error on test specs with no matching tests
 * The `-w`, `--warn` warning flags can now be provided multiple times to enable multiple warnings
 * The case-insensitive handling of tags is now more reliable and takes up less memory

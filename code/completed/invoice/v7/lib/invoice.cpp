@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 #include "invoice.h"
 #include <iomanip>
@@ -10,8 +10,7 @@
 namespace invoice::v7 {
 
 ProductMap
-ProductsFromDescriptions(const std::map<std::string, ProductDescription>& descriptions
-) {
+ProductsFromDescriptions(const std::map<std::string, ProductDescription>& descriptions) {
     ProductMap products {};
     for (const auto& [productName, productDescription] : descriptions) {
         products[productName] = Product {productDescription};
@@ -46,11 +45,11 @@ void AddLineForSingleItem(
     const double discount {ComputeDiscount(departmentName, quantity)};
     const double discountedPrice {itemPrice * (1 - discount)};
     const double price {discountedPrice * quantity};
-    ot[departmentName].items += quantity;
+    ot[departmentName].message_contents += quantity;
     ot[departmentName].total += price;
 
-    ot.GetStream() << "  - " << std::left << std::setw(12) << (itemName + ":")
-                   << std::right << std::setw(4) << quantity << " à " << std::fixed
+    ot.GetStream() << "  - " << std::left << std::setw(12) << (itemName + ":") << std::right
+                   << std::setw(4) << quantity << " à " << std::fixed
                    << std::setprecision(2) << itemPrice << " = $" << price;
     if (discount > 0) {
         ot.GetStream() << " (discount: $" << (itemPrice * quantity - price) << ")";
@@ -97,8 +96,7 @@ void OrderTracker::PrintDiscount(double volumeDiscount, double total) {
 
 double ComputeDiscount(const std::string& departmentName, int quantity) {
     auto& department {departments.at(departmentName)};
-    double discount {
-        quantity >= department.discountThreshold ? department.discount : 0.0};
+    double discount {quantity >= department.discountThreshold ? department.discount : 0.0};
     return discount;
 }
 } // namespace invoice::v7

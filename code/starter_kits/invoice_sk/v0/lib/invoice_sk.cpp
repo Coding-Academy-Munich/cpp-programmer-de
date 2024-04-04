@@ -1,7 +1,7 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 // - Initial version of the invoice generator
-// - Currently only supports produce and dairy items
+// - Currently only supports produce and dairy message_contents
 // - We want to extend it to support more departments
 // - We have a test suite in the test subdirectory
 

@@ -34,12 +34,6 @@ add_executable(shm_040_named_objects
         utils.h)
 target_link_libraries(shm_040_named_objects Boost::interprocess)
 
-add_executable(shm_045_synchronization
-        shm_045_synchronization.cpp
-        shm_045_synchronization.h
-        utils.h)
-target_link_libraries(shm_045_synchronization Boost::interprocess)
-
 add_executable(shm_050_bad_pointer
         shm_050_bad_pointer.cpp
         shm_050_bad_pointer.h
@@ -57,3 +51,13 @@ add_executable(shm_070_allocator
         shm_070_allocator.h
         utils.h)
 target_link_libraries(shm_070_allocator Boost::interprocess)
+
+add_executable(shm_080_producer
+        shm_080_producer.cpp
+        shm_080_queue.h)
+target_link_libraries(shm_080_producer Boost::interprocess)
+
+add_executable(shm_080_consumer
+        shm_080_consumer.cpp
+        shm_080_queue.h)
+target_link_libraries(shm_080_consumer Boost::interprocess)

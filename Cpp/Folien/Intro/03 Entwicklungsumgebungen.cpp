@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Entwicklungsumgebungen</b>
@@ -26,14 +12,14 @@
 // <!-- 03 Entwicklungsumgebungen.cpp -->
 // <!-- slides/module_110_introduction/topic_130_dev_env.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // # Entwicklungsumgebungen
 //
 // - Die meisten aktuellen C++ Entwicklungsumgebungen sind geeignet
 // - CMake $\geq$ 3.20
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Unter Windows z.B.
 //   - Visual Studio 2022, jede Edition und Version (getestet mit 17.5.4).
@@ -42,7 +28,7 @@
 //   - Visual Studio Code mit den C++- und CMake-Tools und einer entsprechenden
 //     Toolchain
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Unter Unix/Linux, z.B
 //   - als Compiler.
@@ -55,7 +41,7 @@
 //     - Visual Studio Code mit den C++- und CMake-Tools
 //     - JetBrains CLion mit einer entsprechenden Toolchain
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Docker Image für den Code
 //
@@ -64,7 +50,7 @@
 //   - `mhoelzl/cam-cpp-dev:latest`
 // - Download und Installation des Docker Images in gesonderten Video
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // ## Interaktive Notebooks
 //
@@ -74,7 +60,7 @@
 // - Nur Linux und MacOS
 // - Wir haben ein Docker-Image mit allen benötigten Tools vorkonfiguriert
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // ## Docker Image für Notebooks
 //

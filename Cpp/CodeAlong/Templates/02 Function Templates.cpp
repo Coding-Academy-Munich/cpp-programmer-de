@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Function Templates</b>
@@ -26,7 +12,7 @@
 // <!-- 02 Function Templates.cpp -->
 // <!-- slides/module_400_templates/topic_140_function_templates.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // - Funktionen können ebenfalls Templates sein
 //   - Aufruf: `max<int>(1, 2)`
@@ -35,7 +21,7 @@
 //   - Compiler kann den Typ aus den Argumenten ableiten
 //   - Aufruf: `max(1, 2)`
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 #include <iostream>
 #include "type_name.hpp"
 
@@ -43,23 +29,23 @@ using namespace std::string_literals;
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
-
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 // %%
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %%
 
 // %%
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %% [markdown]
 //
 // ## Templates und Overload Resolution
 //
@@ -71,7 +57,7 @@ using namespace std::string_literals;
 //   - Referenz nach Wert
 //   - Const nach Nicht-Const
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 namespace ns
 {
 template <typename T>
@@ -86,34 +72,34 @@ void describe(int i)
 }
 }
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 ns::describe(1);
 
-// %% tags=["keep"]
+// %%
 ns::describe(1.0);
 
-// %% tags=["keep"]
+// %%
 ns::describe(true);
 
-// %% tags=["keep"]
+// %%
 ns::describe("Hello World!");
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 int i{0};
 int& ir{i};
 
-// %% tags=["keep"]
+// %%
 ns::describe(i);
 
-// %% tags=["keep"]
+// %%
 ns::describe(ir);
 
-// %% tags=["keep"]
+// %%
 const int j{0};
 const int& jr{j};
 
-// %% tags=["keep"]
+// %%
 ns::describe(j);
 
-// %% tags=["keep"]
+// %%
 ns::describe(jr);

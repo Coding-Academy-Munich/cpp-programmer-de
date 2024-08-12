@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Vektor (Teil 2)</b>
@@ -26,7 +12,7 @@
 // <!-- 11 Vektor (Teil 2).cpp -->
 // <!-- slides/module_140_collections/topic_154_vector_part2.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Pfade
 //
@@ -34,10 +20,10 @@
 // - Um einen Pfad zu speichern, können wir einen Vektor von `Point`-Objekten
 //   verwenden:
 
-// %% tags=["keep"]
+// %%
 #include "point.hpp"
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // Dieser Header definiert die folgende Struktur:
 //
@@ -52,7 +38,7 @@
 // Außerdem definiert er Funktionen zum Anzeigen von Punkten und Vektoren von
 // Punkten in Notebooks, sowie zum Ausgeben auf `std::cout`.
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 Point p1{1.0, 2.0, 3.0};
 Point p2{2.0, 3.0, 4.0};
 Point p3{3.0, 4.0, 5.0};
@@ -61,26 +47,26 @@ Point p3{3.0, 4.0, 5.0};
 
 // %%
 
-// %% tags=["keep"]
+// %%
 std::vector<Point> path{p1, p2, p3};
 
 // %%
 
-// %% tags=["keep"]
+// %%
 std::vector<Point>{ {1, 2, 3}, {2, 3, 4}, {3, 4, 5} }
 
-// %% tags=["keep"]
+// %%
 std::cout << path;
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Vektoren werden "by value" an Funktionen übergeben und von Funktionen
 //   zurückgegeben.
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 #include <iostream>
 
-// %% tags=["keep"]
+// %%
 void call_by_value(std::vector<Point> path)
 {
     path.push_back({4, 5, 6});
@@ -88,22 +74,22 @@ void call_by_value(std::vector<Point> path)
     std::cout << path << "\n";
 }
 
-// %% tags=["keep"]
+// %%
 path
 
-// %% tags=["keep"]
+// %%
 call_by_value(path);
 
-// %% tags=["keep"]
+// %%
 path
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir können Vektoren als `const vector<T>&` übergeben, um sie nicht kopieren
 //   zu müssen:
 
-// %% tags=["keep"]
+// %%
 void print_path(const std::vector<Point>& path)
 {
     std::cout << "Path:\n";
@@ -114,11 +100,11 @@ void print_path(const std::vector<Point>& path)
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wenn wir den Vektor verändern wollen übergeben wir ihn als `vector<T>&`:
 
-// %% tags=["keep"]
+// %%
 bool read_next_point(std::vector<Point>& path)
 {
     std::cout << "Enter next point (x y z): ";
@@ -131,15 +117,15 @@ bool read_next_point(std::vector<Point>& path)
     return true;
 }
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<Point> path{p1, p2, p3};
 
-// %% tags=["keep"]
+// %%
 // read_next_point(path)
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Typischerweise geben wir Vektoren als Werte zurück.
 // - Seit C++11 ist das effizient möglich.
@@ -149,7 +135,7 @@ std::vector<Point> path{p1, p2, p3};
 //   - Daher gibt man oft einen Pointer zurück.
 //   - Damit muss man sich aber um die Speicherverwaltung kümmern.
 
-// %% tags=["keep"]
+// %%
 std::vector<Point> read_path()
 {
     std::vector<Point> path{};
@@ -157,13 +143,13 @@ std::vector<Point> read_path()
     return path;
 }
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 // path = read_path();
 
 // %%
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: Regen-Daten
 //
@@ -174,7 +160,7 @@ std::vector<Point> read_path()
 // Zeitraums, den durchschnittlichen monatlichen Niederschlag und die Indizes
 // der Monate mit dem höchsten und dem niedrigsten Niederschlag.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // Strukturieren Sie Ihr Programm in Funktionen, so dass jede eine klar
 // definierte Aufgabe erfüllt:
@@ -188,7 +174,7 @@ std::vector<Point> read_path()
 // - `calculate_max_indices()`: Berechnet und gibt die Indizes der Monate mit
 //    dem höchsten Niederschlag zurück.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Hinweise:
 //
@@ -202,28 +188,28 @@ std::vector<Point> read_path()
 //   maximale Niederschlag erreicht wird und dass die entsprechenden Funktionen
 //   daher Vektoren zurückgeben sollten.
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<double> data{2.0, 1.0, 5.0, 1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 4.0};
 
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
-
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 // %%
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %%
+
+// %%
+
+// %%
+
+// %%
+
+// %%
 
 // %%

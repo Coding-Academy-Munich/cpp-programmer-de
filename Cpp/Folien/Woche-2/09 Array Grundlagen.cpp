@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Array Grundlagen</b>
@@ -26,7 +12,7 @@
 // <!-- 09 Array Grundlagen.cpp -->
 // <!-- slides/module_140_collections/topic_110_array_basics.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // # Arrays in C++
 //
@@ -35,7 +21,7 @@
 // - Feste Größe, zur Kompilierzeit bestimmt
 // - Indizierung beginnt bei 0
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Definition von Arrays
 //
@@ -44,7 +30,7 @@
 // - Definition mit oder ohne Initialwerte möglich.
 // - Lokale Arrays werden auf dem Stack gespeichert.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Ohne Initialwerte
 //
@@ -55,7 +41,7 @@
 // %%
 int numbers[5];
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Mit Initialwerten
 //
@@ -65,7 +51,7 @@ int numbers[5];
 // %%
 int numbers[]{1, 2, 3, 4, 5};
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Teilweise Initialisierung
 //
@@ -81,7 +67,7 @@ int numbers[5]{1, 2, 3};
 // %%
 int numbers[5]{};
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Zugriff auf Elemente
 //
@@ -98,14 +84,14 @@ int first_number = numbers[0];
 // %%
 numbers[1] = 42;
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Modifikation von Arrays
 //
 // - Es gibt keine Operationen zur Modifikation des gesamten Arrays.
 // - Z.B. `array_1 = array_2` ist nicht möglich.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Iteration über Arrays
 //
@@ -114,7 +100,7 @@ numbers[1] = 42;
 //   - Indexierte for-Schleife
 // - Range-based for loop immer verwenden, wenn möglich.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Range-based For Loop
 //
@@ -129,7 +115,7 @@ for (int number : numbers) {
     std::cout << number << " ";
 }
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Indexierte For-Schleife
 //
@@ -143,7 +129,7 @@ for (std::size_t i{0}; i < 5; ++i) {
     std::cout << numbers[i] << " ";
 }
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Übergeben von Arrays als Funktionsargumenten
 //
@@ -152,7 +138,7 @@ for (std::size_t i{0}; i < 5; ++i) {
 // - Werden als Zeiger behandelt.
 
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 // void print_array_5(int arr[5])
 // {
 //     for (int elt : arr) {
@@ -168,13 +154,13 @@ void print_array_5(int arr[5])
     }
 }
 
-// %% tags=["keep"]
+// %%
 int numbers[]{1, 2, 3, 4, 5};
 
 // %%
 print_array_5(numbers);
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void inc_array_5(int arr[5])
 {
     for (std::size_t i{0}; i < 5; ++i) {
@@ -186,7 +172,7 @@ void inc_array_5(int arr[5])
 inc_array_5(numbers);
 print_array_5(numbers);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Typ `array[]` ist "unvollständiger Typ."
 // - Wird beim Funktionsaufruf wie ein Zeiger behandelt.
@@ -194,7 +180,7 @@ print_array_5(numbers);
 //   - Sentinel-Wert
 //   - Größe des Arrays als zusätzlicher Parameter
 
-// %% tags=["keep"]
+// %%
 void print_array_incomplete(int arr[], std::size_t size)
 {
     for (std::size_t i{0}; i < size; ++i) {
@@ -202,19 +188,19 @@ void print_array_incomplete(int arr[], std::size_t size)
     }
 }
 
-// %% tags=["keep"]
+// %%
 int numbers[]{1, 2, 3, 4, 5};
 
 // %%
 print_array_incomplete(numbers, 5);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Ein Array kann implizit in einen Zeiger auf das erste Element konvertiert
 //   werden ("decay").
 // - Größe des Arrays geht verloren.
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void print_array(int* arr, std::size_t size)
 {
     for (std::size_t i{0}; i < size; ++i) {
@@ -222,13 +208,13 @@ void print_array(int* arr, std::size_t size)
     }
 }
 
-// %% tags=["keep"]
+// %%
 int numbers[]{1, 2, 3, 4, 5};
 
 // %%
 print_array(numbers, 5);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Arrays und Zeiger
 //
@@ -236,7 +222,7 @@ print_array(numbers, 5);
 // - Arrays können implizit in Zeiger konvertiert werden.
 // - Zeiger unterstützen Addition und Subtraktion.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 numbers[0]
 
 // %%
@@ -248,7 +234,7 @@ numbers[0]
 // %%
 std::cout << (numbers[1] == *(numbers + 1));
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 &numbers[2] == numbers + 2
 
 // %%
@@ -257,14 +243,14 @@ numbers + 2 == 2 + numbers
 // %%
 2[numbers]
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: Arrays
 //
 // - Schreiben Sie eine Funktion `max()`, die das größte Element eines Arrays
 //   von `unsigned int`-Werten zurückgibt.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 unsigned max(const unsigned* arr, std::size_t size)
 {
     unsigned result{0};
@@ -276,20 +262,20 @@ unsigned max(const unsigned* arr, std::size_t size)
     return result;
 }
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 unsigned values[]{1, 8, 3, 5, 2, 9, 4, 7, 6};
 
 // %%
 max(values, 9)
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Schreiben Sie eine Funktion `add()`, die zwei Arrays der gleichen Länge
 //   elementweise addiert.
 // - Welche Argumente müssen Sie an die Funktion übergeben?
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void add(const int* a, const int* b, int* c, std::size_t size)
 {
     for (std::size_t i{0}; i < size; ++i) {
@@ -297,7 +283,7 @@ void add(const int* a, const int* b, int* c, std::size_t size)
     }
 }
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 int a1[]{1, 2};
 int a2[]{10, 20};
 int a3[2];
@@ -306,7 +292,7 @@ int a3[2];
 add(a1, a2, a3, 2);
 a3
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 int b1[]{1, 2, 3, 4, 5};
 int b2[]{5, 4, 3, 2, 1};
 int b3[5];
@@ -315,11 +301,11 @@ int b3[5];
 add(b1, b2, b3, 5);
 b3
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Schreiben Sie eine Funktion `reverse()`, die ein Array in-place umdreht.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void reverse(int* arr, std::size_t size)
 {
     for (std::size_t i{0}; i < size / 2; ++i) {
@@ -327,7 +313,7 @@ void reverse(int* arr, std::size_t size)
     }
 }
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 int c[]{1, 2, 3, 4, 5};
 
 // %%

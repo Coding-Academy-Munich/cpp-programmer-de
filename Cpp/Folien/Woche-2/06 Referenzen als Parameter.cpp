@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Referenzen als Parameter</b>
@@ -26,7 +12,7 @@
 // <!-- 06 Referenzen als Parameter.cpp -->
 // <!-- slides/module_130_pointers/topic_200_reference_args.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Referenzen als Funktionsparameter
 //
@@ -35,7 +21,7 @@
 // - Wenn wir das übergebene Objekt nicht verändern wollen, verwenden wir eine
 //   Referenz auf Const.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 #include <iostream>
 
 // %%
@@ -55,7 +41,7 @@ pass_by_const_reference(i);
 pass_by_const_reference(ri);
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - [CG: F.16: For "in" parameters, pass cheaply-copied types by value and
 //   others by reference to
@@ -63,12 +49,12 @@ pass_by_const_reference(ri);
 // - [CG: F.60: Prefer `T*` over `T&` when "no argument" is a valid
 //   option](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f60-prefer-t-over-t-when-no-argument-is-a-valid-option)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wenn wir ein Argument verändern wollen, verwenden wir eine
 //   (nicht-konstante) Referenz.
 
-// %% tags=["keep"]
+// %%
 #include <iostream>
 
 // %%
@@ -78,7 +64,7 @@ void pass_by_reference(int& i)
     std::cout << "pass_by_reference: " << i << '\n';
 }
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 pass_by_reference(i);
 
 // %%
@@ -91,7 +77,7 @@ pass_by_reference(ri);
 i
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wenn eine Funktion Argumente als Referenz erwartet, können wir keine
 //   Konstanten oder temporären Objekte übergeben.
@@ -110,7 +96,7 @@ pass_by_const_reference(1);
 // %%
 pass_by_const_reference(1 + 2);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Konstante Referenzen können nicht an Funktionen übergeben werden, die
 //   Referenzen auf nicht konstante Objekte erwarten:
@@ -119,11 +105,11 @@ pass_by_const_reference(1 + 2);
 // pass_by_reference(cri);
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Es ist üblich, Structs als Referenz auf const zu übergeben.
 
-// %% tags=["keep"]
+// %%
 struct Point {
     double x;
     double y;
@@ -135,13 +121,13 @@ void print(const Point& p)
     std::cout << "Point{" << p.x << ", " << p.y << "}";
 }
 
-// %% tags=["keep"]
+// %%
 Point p{1.0, 2.0};
 
 // %%
 print(p);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: Abstand zwischen Punkten
 //
@@ -149,10 +135,10 @@ print(p);
 //   Punkten berechnet.
 // - Übergeben Sie die Punkte als Referenz auf const.
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 #include <cmath>
 
-// %% tags=["keep"]
+// %%
 Point p1{1.0, 2.0};
 Point p2{4.0, 6.0};
 
@@ -168,7 +154,7 @@ double distance(const Point& p1, const Point& p2)
 distance(p1, p2);
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: Vertauschen von Werten
 //
@@ -176,7 +162,7 @@ distance(p1, p2);
 // - Übergeben Sie die Werte als Referenz.
 // - Testen Sie die Funktion.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void swap(int& a, int& b)
 {
     int tmp{a};
@@ -184,20 +170,20 @@ void swap(int& a, int& b)
     b = tmp;
 }
 
-// %% tags=["keep"]
+// %%
 int a{1};
 int b{2};
 
-// %% tags=["keep"]
+// %%
 std::cout << "a = " << a << ", b = " << b << "\n";
 
-// %% tags=["alt"]
+// %%
 swap(a, b);
 
-// %% tags=["keep"]
+// %%
 std::cout << "a = " << a << ", b = " << b << "\n";
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Schreiben Sie eine Funktion `swap()`, die zwei `Point`-Werte vertauscht.
 // - Schreiben Sie eine Funktion `swap_coordinates()`, die die `x`- und
@@ -205,7 +191,7 @@ std::cout << "a = " << a << ", b = " << b << "\n";
 // - Übergeben Sie die Werte als Referenz.
 // - Testen Sie die Funktionen.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void swap(Point& a, Point& b)
 {
     Point tmp{a};
@@ -213,24 +199,24 @@ void swap(Point& a, Point& b)
     b = tmp;
 }
 
-// %% tags=["keep"]
+// %%
 Point p1{1.0, 2.0};
 Point p2{3.0, 4.0};
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 print(p1);
 std::cout << "\n";
 print(p2);
 
-// %% tags=["alt"]
+// %%
 swap(p1, p2);
 
-// %% tags=["keep"]
+// %%
 print(p1);
 std::cout << "\n";
 print(p2);
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 void swap_coordinates(Point& p)
 {
     double tmp{p.x};
@@ -238,11 +224,11 @@ void swap_coordinates(Point& p)
     p.y = tmp;
 }
 
-// %% tags=["keep"]
+// %%
 print(p1);
 
-// %% tags=["alt"]
+// %%
 swap_coordinates(p1);
 
-// %% tags=["keep"]
+// %%
 print(p1);

@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Ausnahme-Garantien</b>
@@ -26,7 +12,7 @@
 // <!-- 05 Ausnahme-Garantien.cpp -->
 // <!-- slides/module_180_error_handling/topic_150_exception_guarantees.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // In C++ gibt es verschiedene Zusicherungen, die Funktionen bezüglich
 // Exception-Sicherheit machen:
@@ -34,7 +20,7 @@
 // - Starke Ausnahme-Garantie
 // - Grundlegende Ausnahme-Garantie
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Nothrow/Nofail
 //
@@ -51,7 +37,7 @@
 //   - `swap()` und Move-Konstruktoren sind oft nofail
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Starke Ausnahme-Garantie
 //
@@ -59,7 +45,7 @@
 //   Programms unverändert
 // - Beispiel: `std::vector::push_back()`
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Grundlegende Ausnahme-Garantie
 //
@@ -69,7 +55,7 @@
 // - Alle Standard-Bibliotheksfunktionen haben die Grundlegende
 //   Ausnahme-Garantie
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Keine Ausnahme-Garantie
 //

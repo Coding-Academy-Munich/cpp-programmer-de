@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Docker für Notebooks</b>
@@ -26,7 +12,7 @@
 // <!-- 08 Docker für Notebooks.cpp -->
 // <!-- slides/module_110_introduction/topic_170_docker_for_notebooks.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Docker Images für Notebooks
 //
@@ -42,7 +28,7 @@
 // - Sie können auch einen Parameter `--name <name>` angeben, um einen Namen für
 //   den Container zu vergeben
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Um auf die Notebooks zuzugreifen:
 //   - URL: [http://localhost:8888]

@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Visual Studio Code</b>
@@ -26,14 +12,14 @@
 // <!-- 05 Visual Studio Code.cpp -->
 // <!-- slides/module_110_introduction/topic_134_vscode.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // - Installieren Sie die folgenden Erweiterungen in VS Code:
 //   - C/C++ (`ms-vscode.cpptools`)
 //   - C/C++ Extension Pack (`ms-vscode.cpptools-extension-pack`)
 //   - CMake Tools (`ms-vscode.cmake-tools`)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Öffnen Sie das Projekt:
 //   - `File` $\rightarrow$ `Open Folder...` $\rightarrow$ `code`-Ordner
@@ -45,7 +31,7 @@
 // - `Linux GCC` oder `Linux Clang` für Linux-Systeme
 // - `MacOS Debug` für MacOS-Systeme
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Evtl. Auswahl der Top-Level-`CMakeLists.txt`-Datei
 // - Evtl. Command-Palette: `CMake: Configure` oder `CMake: Delete Cache and
@@ -54,7 +40,7 @@
 // - Auswahl von Build- und Launch-Target
 // - Mehr Information: [Visual Studio Code Dokumentation](https://code.visualstudio.com/docs/languages/cpp)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Einige Targets
 //

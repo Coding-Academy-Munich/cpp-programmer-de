@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>CLion</b>
@@ -26,7 +12,7 @@
 // <!-- 06 CLion.cpp -->
 // <!-- slides/module_110_introduction/topic_136_clion.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // - Öffnen des Projekts:
 //   - `File` $\rightarrow$ `Open` $\rightarrow$ `code/CMakeLists.txt`-Datei auswählen
@@ -36,7 +22,7 @@
 //   ausgewählt werden
 //   - Normalerweise ist das nicht notwendig
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Einige Targets
 //

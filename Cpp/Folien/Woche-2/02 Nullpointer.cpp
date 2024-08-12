@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Nullpointer</b>
@@ -26,7 +12,7 @@
 // <!-- 02 Nullpointer.cpp -->
 // <!-- slides/module_130_pointers/topic_120_nullptr.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Die meisten Pointer verweisen auf ein gültiges Objekt:
 
@@ -35,7 +21,7 @@ int i{1};
 int* pi{&i};
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## `nullptr`
 //
@@ -45,23 +31,23 @@ int* pi{&i};
 // - `nullptr` ist ein spezieller Pointer-Wert, der auf kein Objekt verweist.
 // - Der Nullpointer darf nicht dereferenziert werden!
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 int *pi{nullptr};
 long *pl{nullptr};
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // **Falsch!!!**
 
 // %%
 // *pi
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // [CG: ES.65: Don’t dereference an invalid
 // pointer](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es65-dont-dereference-an-invalid-pointer)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - In älteren C++-Programmen wird oft das Literal `0` (oder der Macro `NULL`)
 //   für den Nullpointer verwendet.
@@ -75,45 +61,45 @@ int* pi2{0};
 int* pi3{NULL};
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Pointer vom gleichen Typ können mit `==` und `!=` verglichen werden.
 // - `a == b` ist genau dann wahr, wenn
 //   - `a` und `b` beide `nullptr` sind, oder
 //   - `a` und `b` beide auf das gleiche Objekt verweisen.
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 int i{1};
 int j{1};
 
-// %% tags=["keep"]
+// %%
 int* pi{&i};
 int* pj{&j};
 int* pn{nullptr};
 
-// %% tags=["keep"]
+// %%
 #include <iostream>
 #include <iomanip>
 
-// %% tags=["alt"]
+// %%
 std::cout << std::boolalpha << (pi == pj);
 
-// %% tags=["alt"]
+// %%
 std::cout << std::boolalpha << (pi == &i);
 
-// %% tags=["alt"]
+// %%
 std::cout << std::boolalpha << (pi == pn);
 
-// %% tags=["alt"]
+// %%
 std::cout << std::boolalpha << (pn == nullptr);
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - In Booleschen Kontexten:
 //   - Der Nullpointer ist falsch.
 //   - Alle anderen Pointer-Werte sind wahr.
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 int i{1};
 int* pi{&i};
 int* my_nullptr{nullptr};
@@ -136,22 +122,22 @@ if (pi) {
     std::cout << "pi is a nullptr\n";
 }
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // [CG: ES.87: Don’t add redundant `==` or `!=` to
 // conditions](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es87-dont-add-redundant--or--to-conditions)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: `nullptr`
 //
 // - Was ist der Wert von `result` nach Ausführung der folgenden Anweisung?
 // - Wie können Sie das testen?
 
-// %% tags=["keep"]
+// %%
 int* result{};
 
-// %% [markdown] lang="de" tags=["answer", "subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 // *Antwort:* 
 // `result` ist `nullptr`.
 
@@ -163,7 +149,7 @@ int* result{};
 // Test
 std::cout << std::boolalpha << (result == nullptr);
 
-// %% tags=["alt"]
+// %%
 if (result) {
     std::cout << "result is not nullptr\n";
 } else {

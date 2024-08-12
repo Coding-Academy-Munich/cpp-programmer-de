@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Funktions-Parameter</b>
@@ -26,18 +12,18 @@
 // <!-- 12 Funktions-Parameter.cpp -->
 // <!-- slides/module_140_collections/topic_156_functional.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - In einem früheren Beispiel haben wir die Indizes der minimalen und
 //   maximalen Elemente eines Vektors folgendermaßen berechnet:
 
-// %% tags=["keep"]
+// %%
 #include <vector>
 
-// %% tags=["keep"]
+// %%
 std::vector<double> data{2.0, 1.0, 5.0, 1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 4.0};
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<std::vector<double>::size_type> calculate_min_indices(const std::vector<double>& data)
 {
     std::vector<std::vector<double>::size_type> indices;
@@ -54,7 +40,7 @@ std::vector<std::vector<double>::size_type> calculate_min_indices(const std::vec
     return indices;
 }
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<std::vector<double>::size_type> calculate_max_indices(const std::vector<double>& data)
 {
     std::vector<std::vector<double>::size_type> indices;
@@ -71,7 +57,7 @@ std::vector<std::vector<double>::size_type> calculate_max_indices(const std::vec
     return indices;
 }
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Diese Funktionen sind sich sehr ähnlich, sie unterscheiden sich nur durch
 //   - Den Initialwert von `value`
@@ -79,7 +65,7 @@ std::vector<std::vector<double>::size_type> calculate_max_indices(const std::vec
 // - Es ist leicht, den Wert von `value` als Parameter zu übergeben
 // - Können wir das auch für den Vergleich machen?
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Zeiger auf Funktionen
 //
@@ -89,14 +75,14 @@ std::vector<std::vector<double>::size_type> calculate_max_indices(const std::vec
 //   - Wir können sie an Funktionen übergeben
 //   - Wir können sie dereferenzieren und aufrufen
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 bool is_less(double x, double y)
 {
     return x < y;
 }
 
 
-// %% tags=["keep"]
+// %%
 bool is_greater(double x, double y)
 {
     return x > y;
@@ -110,7 +96,7 @@ bool is_greater(double x, double y)
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir brauchen beim Aufruf `pf` nicht explizit dereferenzieren
 // - Wir brauchen die Adresse von Funktionen nicht explizit nehmen
@@ -124,7 +110,7 @@ bool is_greater(double x, double y)
 // %%
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Funktion `calculate_indices()`
 //   - Parameter `data`: Vektor mit `double`-Werten
@@ -137,7 +123,7 @@ bool is_greater(double x, double y)
 // - Damit können wir die Funktionen `calculate_min_indices()` und
 //   `calculate_max_indices()` ausdrücken
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<std::vector<double>::size_type> calculate_indices(
     const std::vector<double>& data,
     bool (*compare)(double, double),   // <<<===
@@ -158,35 +144,35 @@ std::vector<std::vector<double>::size_type> calculate_indices(
 }
 
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 #include <limits>
 
-// %% tags=["keep"]
+// %%
 calculate_indices(data, is_less, std::numeric_limits<double>::max())
 
-// %% tags=["keep"]
+// %%
 calculate_indices(data, is_greater, std::numeric_limits<double>::lowest())
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Es gibt nicht nur Funktionszeiger, die in dieser Art verwendet werden können:
 //   - Lambdas
 //   - Instanzen von Klassen mit `operator()`
 // - Um alle diese Fälle abzudecken, gibt es `std::function`:
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 calculate_indices(
     data,
     [](double x, double y) { return x < y; },
     std::numeric_limits<double>::max())
 
-// %% tags=["keep"]
+// %%
 calculate_indices(
     data,
     [](double x, double y) { return x > y; },
     std::numeric_limits<double>::lowest())
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 std::vector<std::vector<double>::size_type> calculate_indices_2(
     const std::vector<double>& data,
     std::function<bool(double, double)> compare, // <<<===
@@ -206,34 +192,34 @@ std::vector<std::vector<double>::size_type> calculate_indices_2(
     return indices;
 }
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 calculate_indices_2(data, is_less, std::numeric_limits<double>::max())
 
-// %% tags=["keep"]
+// %%
 calculate_indices_2(data, is_greater, std::numeric_limits<double>::lowest())
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 #include <functional>
 
-// %% tags=["keep"]
+// %%
 calculate_indices_2(data, std::less<double>{}, std::numeric_limits<double>::max())
 
-// %% tags=["keep"]
+// %%
 calculate_indices_2(data, std::greater<double>{}, std::numeric_limits<double>::lowest())
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 calculate_indices_2(
     data,
     [](double x, double y) { return x < y; },
     std::numeric_limits<double>::max())
 
-// %% tags=["keep"]
+// %%
 calculate_indices_2(
     data,
     [](double x, double y) { return x > y; },
     std::numeric_limits<double>::lowest())
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: Vorhersage von Aktienkursen
 //
@@ -250,14 +236,14 @@ calculate_indices_2(
 //   - Einen Algorithmus, der den Maximalwert aller bekannten Preise als
 //     Vorhersage zurückgibt
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 #include <iostream>
 #include <vector>
 
-// %% tags=["keep"]
+// %%
 std::vector<double> prices{100.0, 102.0, 104.0, 105.0, 106.0, 107.0};
 
-// %% tags=["keep"]
+// %%
 double average_prediction(const std::vector<double>& prices)
 {
     double sum{0.0};
@@ -267,10 +253,10 @@ double average_prediction(const std::vector<double>& prices)
     return sum / prices.size();
 }
 
-// %% tags=["keep"]
+// %%
 average_prediction(prices)
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 double max_prediction(const std::vector<double>& prices)
 {
     double max{prices[0]};
@@ -282,18 +268,18 @@ double max_prediction(const std::vector<double>& prices)
     return max;
 }
 
-// %% tags=["keep"]
+// %%
 max_prediction(prices)
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 
-// %% tags=["keep"]
+// %%
 print_predictions(prices, average_prediction);
 
-// %% tags=["keep"]
+// %%
 print_predictions(prices, max_prediction);
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 #include <numeric>
 
 // %%

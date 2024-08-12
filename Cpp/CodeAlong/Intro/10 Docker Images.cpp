@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Docker Images</b>
@@ -26,7 +12,7 @@
 // <!-- 10 Docker Images.cpp -->
 // <!-- slides/module_110_introduction/topic_164_docker_images.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Manuelles Starten der Docker Images
 //
@@ -40,7 +26,7 @@
 //
 // - Ersetzen Sie `/path/to/code` durch den absoluten Pfad zum Ordner `code`
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Erstellen der Projekte im Container
 //
@@ -51,7 +37,7 @@
 // ./out/build/linux-clang/completed/hello_world/hello_world
 // ```
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Erstellen von `blocks_sk` (nativer Build)
 //
@@ -67,7 +53,7 @@
 //
 // Die Konfiguration von X11 Forwarding übersteigt den Rahmen dieses Kurses.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Erstellen von `blocks_sk` (Web Build)
 //
@@ -82,7 +68,7 @@
 // python -m http.server
 // ```
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // Um auf die Web-Anwendung zuzugreifen muss das Docker Image mit der Option
 // `-p 8000:8000` gestartet werden:

@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Arbeiten mit Notebooks</b>
@@ -26,7 +12,7 @@
 // <!-- 11 Arbeiten mit Notebooks.cpp -->
 // <!-- slides/module_110_introduction/topic_180_working_with_notebooks.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // # Starten des Docker Containers
 //
@@ -35,7 +21,7 @@
 // docker start <container-name>
 // ```
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // # Notebooks
 //
@@ -43,7 +29,7 @@
 // - Diese Art zu Arbeiten ist bei C++ nicht so verbreitet
 // - Für Schulungen ist sie aber hervorragend geeignet
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Arbeiten mit Notebooks
 //
@@ -62,13 +48,13 @@
 // %%
 17 + 4
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Zellen können auch Anweisungen enthalten, z.B. Funktionsdefinitionen
 // - Beim Ausführen einer Zelle, in der eine Funktion definiert wird, wird die
 //   Funktion für den Rest des Notebooks verfügbar gemacht
 
-// %% tags=["keep"]
+// %%
 #include <iostream>
 
 void say_hello(const std::string& name) {
@@ -81,11 +67,11 @@ say_hello("World")
 // %%
 say_hello("you")
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Das gleiche gilt für Structs und Klassen:
 
-// %% tags=["keep"]
+// %%
 struct Point {
     int x;
     int y;
@@ -100,7 +86,7 @@ p.x
 // %%
 p.y
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Es gibt zwei Modi: Kommando- und Edit-Modus (`Esc` / `Enter`)
 // - Einige Tastaturkürzel:
@@ -109,7 +95,7 @@ p.y
 //   - (`Tab`)
 //   - (`Shift-Tab`)
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 123
 
 // %%

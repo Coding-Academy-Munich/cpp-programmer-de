@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Einführung in Docker</b>
@@ -26,7 +12,7 @@
 // <!-- 07 Einführung in Docker.cpp -->
 // <!-- slides/module_110_introduction/topic_160_docker_intro.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Docker
 //
@@ -34,7 +20,7 @@
 // - Download: [Docker Website](https://www.docker.com/products/docker-desktop/)
 // - Test: `docker info`
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Docker Images
 //
@@ -45,14 +31,14 @@
 // - Sie können auch eigene Docker Images erstellen
 // - Das ist aber nicht notwendig, um die Docker Images für den Kurs zu verwenden
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Herunterladen und Ausführen von Docker Images
 //
 // - `docker pull hello-world`
 // - `docker run hello-world`
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Docker Images für den Kurs
 //

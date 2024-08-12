@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Klassen-Templates</b>
@@ -26,7 +12,7 @@
 // <!-- 01 Klassen-Templates.cpp -->
 // <!-- slides/module_400_templates/topic_130_class_templates.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Templates erlauben es, Klassen zu definieren, die von einem Typ abhängen
 // - Beispiel: `std::vector<T>`
@@ -38,7 +24,7 @@
 // - Dazu verwenden wir das Schlüsselwort `template`, gefolgt von einer
 //   Template-Parameter-Liste
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 template <typename T>
 struct BufferV1
 {
@@ -54,7 +40,7 @@ struct BufferV1
     }
 };
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Template-Parameter
 //
@@ -62,7 +48,7 @@ struct BufferV1
 // - `T` kann in der Klasse wie ein Typ verwendet werden
 // - Beim Instanziieren der Klasse wird `T` durch einen konkreten Typ ersetzt
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 BufferV1<int> ib;
 
 // %%
@@ -77,49 +63,49 @@ ib.add(1);
 // %%
 ib[0]
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 BufferV1<std::string> sb;
 
-// %% tags=["keep"]
+// %%
 sb[0] = "Hello";
 
-// %% tags=["keep"]
+// %%
 sb[0]
 
-// %% tags=["keep"]
+// %%
 sb.add(" World");
 
-// %% tags=["keep"]
+// %%
 sb[0]
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Das Instanziieren einer Template-Klasse funktioniert nur, wenn die aufgerufenen
 //   Methoden für den konkreten Typ `T` definiert sind:
 
-// %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
+// %%
 #include <vector>
 
-// %% tags=["keep"]
+// %%
 BufferV1<std::vector<int>> bvi;
 
-// %% tags=["keep"]
+// %%
 bvi[0] = {1, 2, 3};
 
-// %% tags=["keep"]
+// %%
 bvi[0]
 
 // %%
 // bvi.add({4, 5, 6});
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Template-Spezialisierung
 //
 // - Wir können eine Template-Klasse für bestimmte Typen spezialisieren
 
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 template <typename T>
 struct BufferV2
 {
@@ -135,7 +121,7 @@ struct BufferV2
     }
 };
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 template <>
 struct BufferV2<std::vector<int>>
 {
@@ -153,26 +139,26 @@ struct BufferV2<std::vector<int>>
 };
 
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 BufferV2<std::vector<int>> bvi2;
 
-// %% tags=["keep"]
+// %%
 bvi2[0] = {1, 2, 3};
 
-// %% tags=["keep"]
+// %%
 bvi2[0]
 
-// %% tags=["keep"]
+// %%
 bvi2.add({4, 5, 6});
 
-// %% tags=["keep"]
+// %%
 bvi2[0]
 
-// %% tags=["keep"]
+// %%
 bvi2[1]
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Partielle Spezialisierung
 //
@@ -181,7 +167,7 @@ bvi2[1]
 //   durchführen könnten
 // - Das ist mit partieller Spezialisierung möglich:
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 template <typename T>
 struct BufferV3
 {
@@ -198,7 +184,7 @@ struct BufferV3
 };
 
 
-// %% tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+// %%
 template <typename T>
 struct BufferV3<std::vector<T>>
 {
@@ -215,25 +201,25 @@ struct BufferV3<std::vector<T>>
 
 };
 
-// %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+// %%
 BufferV3<std::vector<std::string>> bvs;
 
-// %% tags=["keep"]
+// %%
 bvs[0] = {"a", "b", "c"};
 
-// %% tags=["keep"]
+// %%
 bvs[0]
 
-// %% tags=["keep"]
+// %%
 bvs.add({"d", "e", "f"});
 
-// %% tags=["keep"]
+// %%
 bvs[0]
 
-// %% tags=["keep"]
+// %%
 bvs[1]
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Template-Parameter können auch Werte sein
 // - Sie können dann wie Konstanten verwendet werden
@@ -243,7 +229,7 @@ bvs[1]
 // - Für jeden Typ, den wir für `T` und jede Zahl, die wir für `N` einsetzen,
 //   wird eine neue Array-Klasse erzeugt
 
-// %% tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+// %%
 template <typename T, int N>
 struct BufferV4
 {
@@ -261,7 +247,7 @@ struct BufferV4
     int size() const { return N; }
 };
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 BufferV4<int, 10> ib4;
 
 // %%
@@ -273,13 +259,13 @@ BufferV4<int, 20> ib5;
 // %%
 ib5.size()
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir können die Werte von Template-Parametern auch berechnen
 // - Die Berechnung muss zur Compile-Zeit erfolgen
 // - Dazu verwenden wir `constexpr`-Funktionen
 
-// %% tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+// %%
 constexpr int square(int x)
 {
     return x * x;

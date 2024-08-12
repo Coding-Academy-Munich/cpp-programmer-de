@@ -1,6 +1,0 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
-
-#ifndef COMPLETED_CPP_PATTERNS_STATIC_STRATEGY_H
-#define COMPLETED_CPP_PATTERNS_STATIC_STRATEGY_H
-
-#endif // COMPLETED_CPP_PATTERNS_STATIC_STRATEGY_H

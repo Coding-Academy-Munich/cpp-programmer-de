@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Vektor (Teil 1)</b>
@@ -26,7 +12,7 @@
 // <!-- 10 Vektor (Teil 1).cpp -->
 // <!-- slides/module_140_collections/topic_150_vector_part1.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - `std::vector` in der Standardbibliothek definiert.
 // - Ein Vektor kann beliebig viele Elemente speichern.
@@ -34,14 +20,14 @@
 // - Wir geben den Typ der Elemente in spitzen Klammern an.
 // - Wir können zur Laufzeit Elemente hinzufügen und entfernen.
 
-// %% tags=["keep"]
+// %%
 #include <vector>
 
 // %%
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Member-Funktionen
 //
@@ -54,7 +40,7 @@
 //   - mit `pop_back()` das letzte Element entfernen,
 //   - mit `clear()` alle Elemente entfernen.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Prüfen, ob ein Vektor leer ist.
 // - Abfragen der Größe.
@@ -70,11 +56,11 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Zugriff auf das erste und letzte Element.
 
-// %% tags=["keep"]
+// %%
 numbers.push_back(2);
 numbers.push_back(3);
 numbers
@@ -83,15 +69,13 @@ numbers
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Zugriff mit Index.
 // - Index beginnt bei 0.
 // - `at()` wirft eine Exception, wenn der Index ungültig ist.
 // - `[]` hat undefiniertes Verhalten, wenn der Index ungültig ist.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
 
 // %%
@@ -104,121 +88,123 @@ numbers
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %% [markdown]
 //
 // - Entfernen des letzten Elements:
 
-// %% tags=["keep"]
+// %%
 numbers
 
 // %%
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Entfernen aller Elemente:
 
-// %% tags=["keep"]
+// %%
 numbers
 
 // %%
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Initialisierung
 //
 // - Wir können einen Vektor mit einer Initialisierungsliste initialisieren:
 
-// %% tags=["keep"]
+// %%
 std::vector<int> more_numbers{1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir können einen Vektor auch mit einer bestimmten Anzahl von Elementen
 //   initialisieren
 // - Beachten Sie, dass wir dazu runde Klammern verwenden, nicht geschweifte:
 
-// %% tags=["keep"]
+// %%
 std::vector<int> ten_numbers(10);
 
-// %% tags=["keep"]
+// %%
 ten_numbers
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir können auch einen Vektor mit einer bestimmten Anzahl von Elementen und
 //   einem bestimmten Wert initialisieren
 // - Dazu verwenden wir wieder runde Klammern:
 
 
-// %% tags=["keep"]
+// %%
 std::vector<int> ten_numbers_with_value(10, 42);
 
-// %% tags=["keep"]
+// %%
 ten_numbers_with_value
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ### Vorsicht!
 //
 // - `std::vector<int> ten_numbers(10, 42);` ist nicht das gleiche wie
 //   `std::vector<int> ten_numbers{10, 42};`!
 
-// %% tags=["keep"]
+// %%
 std::vector<int>(10)
 
-// %% tags=["keep"]
+// %%
 std::vector<int>{10}
 
-// %% tags=["keep"]
+// %%
 std::vector<int>(10, 42)
 
-// %% tags=["keep"]
+// %%
 std::vector<int>{10, 42}
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Wir können einen Vektor `v` mit einem anderen Vektor `w` initialisieren:
 // - Dabei werden die Elemente von `w` nach `v` kopiert:
 
-// %% tags=["keep"]
+// %%
 std::vector<int> num_copy{more_numbers};
 
-// %% tags=["keep"]
+// %%
 num_copy
 
-// %% tags=["keep"]
+// %%
 more_numbers[0] = 42;
 num_copy.push_back(20);
 
-// %% tags=["keep"]
+// %%
 more_numbers
 
-// %% tags=["keep"]
+// %%
 num_copy
 
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Iteration
 //
 // - Wir können einen Vektor mit einer `for`-Schleife durchlaufen:
 
 
-// %% tags=["keep"]
+// %%
 #include <iostream>
 
-// %% tags=["keep"]
+// %%
 for (int i{0}; i < more_numbers.size(); ++i) {
     std::cout << more_numbers[i] << " ";
 }
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Diese Schleife ist aber nicht sehr schön.
 // - Besser ist, wenn wir eine Range-based `for`-Schleife verwenden:

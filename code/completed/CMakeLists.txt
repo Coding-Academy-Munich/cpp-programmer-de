@@ -1,15 +1,43 @@
-add_subdirectory("adventure")
-add_subdirectory("bmi")
-add_subdirectory("cpp_patterns")
-add_subdirectory("hello_world")
-add_subdirectory("invoice")
-add_subdirectory("library")
-add_subdirectory("memory_and_polymorphism")
-add_subdirectory("modern_cpp")
-add_subdirectory("namespace_lookup")
-add_subdirectory("pointers")
-add_subdirectory("raii")
-add_subdirectory("range_examples")
-add_subdirectory("shared_memory")
-add_subdirectory("simple_calculator")
-add_subdirectory("simple_examples")
+set(COMPLETED_PROJECTS
+        adventure
+        bmi
+        builder
+        catch2_intro
+        cpp_patterns
+        etl_examples
+        fizz_buzz
+        hello_world
+        invoice
+        library
+        memory_and_polymorphism
+        modern_cpp
+        namespace_lookup
+        pointers
+        prime_factors
+        raii
+        range_examples
+        recipes
+        salaries
+        shared_memory
+        simple_calculator
+        simple_examples
+        singleton
+        test_examples
+        virtual_university
+)
+
+foreach (PROJECT ${COMPLETED_PROJECTS})
+    if (IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${PROJECT})
+        add_subdirectory(${PROJECT})
+    endif ()
+endforeach ()
+
+set(OPTIONAL_COMPLETED_PROJECTS
+        error_handling
+)
+
+foreach (PROJECT ${OPTIONAL_COMPLETED_PROJECTS})
+    if (IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${PROJECT})
+        add_subdirectory(${PROJECT} EXCLUDE_FROM_ALL)
+    endif ()
+endforeach ()

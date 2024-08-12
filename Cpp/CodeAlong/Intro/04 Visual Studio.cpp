@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Visual Studio</b>
@@ -26,7 +12,7 @@
 // <!-- 04 Visual Studio.cpp -->
 // <!-- slides/module_110_introduction/topic_132_vs.cpp -->
 
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // - Öffnen des Projekts:
 //   - Startbildschirm: `Open a local folder` $\rightarrow$ `code`-Ordner auswählen
@@ -37,7 +23,7 @@
 // - `Select Startup Item...` $\rightarrow$ das gewünschte Target auswählen
 // - Mehr Information: [Visual Studio Dokumentation](https://learn.microsoft.com/de-de/cpp/build/cmake-projects-in-visual-studio?view=msvc-170)
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Einige Targets
 //

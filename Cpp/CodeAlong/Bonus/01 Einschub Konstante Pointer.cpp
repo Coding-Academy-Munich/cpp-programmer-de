@@ -1,19 +1,5 @@
 // -*- coding: utf-8 -*-
-// ---
-// jupyter:
-//   jupytext:
-//     text_representation:
-//       extension: .cpp
-//       format_name: percent
-//       format_version: '1.3'
-//       jupytext_version: 1.16.1
-//   kernelspec:
-//     display_name: C++17
-//     language: C++17
-//     name: xcpp17
-// ---
-
-// %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
+// %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
 //  <b>Einschub: Konstante Pointer</b>
@@ -26,13 +12,13 @@
 // <!-- 01 Einschub Konstante Pointer.cpp -->
 // <!-- slides/module_130_pointers/topic_300_const_pointer.cpp -->
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - In den meisten Fällen meinen wir einen *Pointer auf Const*, wenn wir von
 //   einem *konstanten Pointer* sprechen.
 // - Es gibt aber auch wirklich *konstante Pointer*.
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Um die Syntax zu verstehen, sehen wir uns die Stellung des Schlüsselworts
 //   `const` an.
@@ -49,37 +35,37 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // Konstanter `int`-Wert:
 
 // %%
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // Pointer auf int:
 
 // %%
 
-// %% [markdown] lang="de" tss=["subslide"]
+// %% [markdown]
 //
 // Pointer auf konstanten `int`-Wert:
 
 // %%
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // Konstanter Pointer auf `int`-Wert:
 
 // %%
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // Konstanter Pointer auf konstanten `int`-Wert:
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Bei einem Pointer auf Const kann man
 //   - den Pointer selbst verändern, aber
@@ -92,7 +78,7 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Bei einem konstanten Pointer kann man
 //   - den Pointer selbst nicht verändern, aber
@@ -107,7 +93,7 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Bei einem konstanten Pointer auf Const kann man
 //   - den Pointer selbst nicht verändern, und
@@ -120,7 +106,7 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## `constexpr` Pointer
 //
@@ -130,8 +116,6 @@
 // - Der Wert des Pointers kann sich zur Laufzeit ändern.
 // - D.h. `constexpr` Pointer sind *immer* top-level `const`.
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
 
 // %%
@@ -142,7 +126,9 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %% [markdown]
 //
 // - Auch `constexpr` Pointer auf `const` sind möglich.
 // - Ein derartiger Pointer ist sowohl low-level als auch top-level `const`.
@@ -155,7 +141,7 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // - Bei fundamentalen Typen ist es nicht notwendig, `constexpr` zusammen mit
 //   `const` zu verwenden.
@@ -168,13 +154,13 @@
 
 // %%
 
-// %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %% [markdown]
 //
 // ## Mini-Workshop: `const` Pointer
 //
 // Gegeben seien die folgenden Variablendefinitionen:
 
-// %% tags=["keep"]
+// %%
 int i{};
 const int ci{};
 int* pi{};
@@ -182,11 +168,11 @@ const int* pci{};
 int* const cpi{};
 const int* const cpci{};
 
-// %% [markdown] lang="de"
+// %% [markdown]
 //
 // Welche der folgenden Zuweisungen sind gültig? Warum (nicht)?
 
-// %% tags=["keep"]
+// %%
 // i = 1;
 
 // %%
@@ -195,7 +181,11 @@ const int* const cpci{};
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
+
+// %%
+
+// %%
 
 // %%
 
@@ -203,11 +193,7 @@ const int* const cpci{};
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 // %%
-
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 // %%
 
@@ -215,7 +201,7 @@ const int* const cpci{};
 
 // %%
 
-// %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+// %%
 
 // %%
 
